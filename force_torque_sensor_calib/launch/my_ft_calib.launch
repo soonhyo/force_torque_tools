@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node name="ft_calib" pkg="force_torque_sensor_calib" type="ft_calib_node" cwd="node" respawn="false" output="screen" >
+    <rosparam command="load" file="$(find baxter_salon)/config/my_ft_calib_params.yaml"/>
+    <remap from="/ft_calib/ft_raw" to="/cfs_rebase/wrench"/>
+    <remap from="/ft_calib/imu" to="/robot/accelerometer/left_accelerometer/state/with_frame_id" />
+  </node>
+</launch>
